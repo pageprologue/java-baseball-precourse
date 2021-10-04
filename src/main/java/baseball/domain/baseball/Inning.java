@@ -3,6 +3,7 @@ package baseball.domain.baseball;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Inning {
     public static final int INNING_COUNT = 3;
@@ -28,7 +29,7 @@ public class Inning {
     }
 
     private static void validateSize(List<Integer> numbers) {
-        HashSet<Integer> balls = new HashSet<>(numbers);
+        Set<Integer> balls = new HashSet<>(numbers);
         if (balls.size() != INNING_COUNT) {
             throw new IllegalArgumentException("야구 게임 한 회에는 중복되지 않는 숫자 3개가 있어야 합니다.");
         }
