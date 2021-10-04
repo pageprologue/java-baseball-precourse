@@ -14,19 +14,19 @@ class InningTest {
     @DisplayName("랜덤으로 중복되지 않는 3개의 야구공을 생성한다.")
     void randomInning() {
         //when
-        List<Integer> rangeNumber = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9);
-        Inning pitcherBalls = Inning.randomInning();
+        List<Integer> rangeNumbers = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9);
+        Inning pitcherInning = Inning.randomInning();
 
         // then
-        assertThat(pitcherBalls.getBalls()).hasSize(3);
-        pitcherBalls.getBalls()
+        assertThat(pitcherInning.getBalls()).hasSize(3);
+        pitcherInning.getBalls()
                 .forEach(ball -> {
-                    assertThat(rangeNumber).contains(ball.getNumber());
+                    assertThat(rangeNumbers).contains(ball.getNumber());
                 });
     }
 
     @Test
-    @DisplayName("중복되지 않는 3개의 야구공을 생성한다.")
+    @DisplayName("입력받은 값으로 중복되지 않는 3개의 야구공을 생성한다.")
     void createInning() {
         //given
         List<Integer> input = Arrays.asList(1, 2, 3);

@@ -14,14 +14,14 @@ public class Ball {
         this.number = number;
     }
 
-    public static Ball of(int number) {
-        validateRange(number);
-        return new Ball(number);
-    }
-
     public static Ball random() {
         int randomBall = Randoms.pickNumberInRange(MIN_BALL_NUMBER, MAX_BALL_NUMBER);
         return new Ball(randomBall);
+    }
+
+    public static Ball of(int number) {
+        validateRange(number);
+        return new Ball(number);
     }
 
     private static void validateRange(int number) {
