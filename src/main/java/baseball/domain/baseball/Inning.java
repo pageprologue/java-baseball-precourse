@@ -1,9 +1,6 @@
 package baseball.domain.baseball;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Inning {
     public static final int INNING_COUNT = 3;
@@ -14,7 +11,7 @@ public class Inning {
     }
 
     public static Inning randomInning() {
-        List<Ball> balls = new ArrayList<>();
+        List<Ball> balls = new LinkedList<>();
         while (balls.size() < INNING_COUNT) {
             balls.add(Ball.random());
         }

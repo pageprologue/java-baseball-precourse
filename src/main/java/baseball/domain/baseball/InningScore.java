@@ -16,6 +16,7 @@ public class InningScore {
             strike(pitcherBalls.get(i), batterBalls.get(i));
             ball(pitcherBalls, batterBalls.get(i));
         }
+        this.ball = ball - strike;
     }
 
     private void strike(Ball pitcherBall, Ball batterBall) {

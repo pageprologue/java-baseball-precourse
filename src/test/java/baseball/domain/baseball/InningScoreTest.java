@@ -36,7 +36,7 @@ class InningScoreTest {
     void ball() {
         //given
         Player pitcher = new Player(Inning.createInning(Arrays.asList(1, 2, 3)));
-        Player batter = new Player(Inning.createInning(Arrays.asList(3, 2, 1)));
+        Player batter = new Player(Inning.createInning(Arrays.asList(3, 1, 2)));
 
         //when
         inningScore.compare(pitcher.getBalls(), batter.getBalls());
