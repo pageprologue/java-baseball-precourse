@@ -1,38 +1,29 @@
 package baseball.domain.baseball;
 
-import java.util.*;
+import baseball.domain.score.Score;
+
+import java.util.List;
 
 public class Inning {
-    public static final int INNING_COUNT = 3;
-    private final List<Ball> balls;
+    private final Player pitcher;
+    private final Player batter;
 
-    private Inning(List<Ball> balls) {
-        this.balls = balls;
+    public Inning(Player pitcher, Player batter) {
+        this.pitcher = pitcher;
+        this.batter = batter;
     }
 
-    public static Inning randomInning() {
-        List<Ball> balls = new LinkedList<>();
-        while (balls.size() < INNING_COUNT) {
-            balls.add(Ball.random());
-        }
-        return new Inning(balls);
+    public static Inning initialize(List<Integer> numbers) {
+        return new Inning(Player.pitcher(), Player.batter(numbers));
     }
 
-    public static Inning createInning(List<Integer> numbers) {
-        validateSize(numbers);
-        List<Ball> balls = new ArrayList<>();
-        numbers.forEach(ball -> balls.add(Ball.of(ball)));
-        return new Inning(balls);
+    public Inning tryInning(List<Integer> numbers) {
+        batter.changeBalls(numbers);
+        return this;
     }
 
-    private static void validateSize(List<Integer> numbers) {
-        Set<Integer> balls = new HashSet<>(numbers);
-        if (balls.size() != INNING_COUNT) {
-            throw new IllegalArgumentException("야구 게임 한 회에는 중복되지 않는 숫자 3개가 있어야 합니다.");
-        }
-    }
-
-    public List<Ball> getBalls() {
-        return balls;
+    public Score compareInning() {
+        Score score = new Score();
+        return score.compare(pitcher.getBalls(), batter.getBalls());
     }
 }
