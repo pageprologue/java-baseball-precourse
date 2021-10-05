@@ -1,22 +1,25 @@
-package baseball.domain.baseball;
+package baseball.domain.score;
+
+import baseball.domain.baseball.Ball;
 
 import java.util.List;
 
-public class InningScore {
+public class Score {
     private int strike;
     private int ball;
 
-    public InningScore() {
+    public Score() {
         this.strike = 0;
         this.ball = 0;
     }
 
-    public void compare(List<Ball> pitcherBalls, List<Ball> batterBalls) {
+    public Score compare(List<Ball> pitcherBalls, List<Ball> batterBalls) {
         for (int i = 0; i < pitcherBalls.size(); i++) {
             strike(pitcherBalls.get(i), batterBalls.get(i));
             ball(pitcherBalls, batterBalls.get(i));
         }
         this.ball = ball - strike;
+        return this;
     }
 
     private void strike(Ball pitcherBall, Ball batterBall) {

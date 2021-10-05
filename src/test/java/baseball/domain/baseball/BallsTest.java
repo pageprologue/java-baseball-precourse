@@ -9,20 +9,18 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
-class InningTest {
+class BallsTest {
     @Test
     @DisplayName("랜덤으로 중복되지 않는 3개의 야구공을 생성한다.")
     void randomInning() {
         //when
         List<Integer> rangeNumbers = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9);
-        Inning pitcherInning = Inning.randomInning();
+        Balls pitcherBalls = Balls.random();
 
         // then
-        assertThat(pitcherInning.getBalls()).hasSize(3);
-        pitcherInning.getBalls()
-                .forEach(ball -> {
-                    assertThat(rangeNumbers).contains(ball.getNumber());
-                });
+        assertThat(pitcherBalls.getBalls()).hasSize(3);
+        pitcherBalls.getBalls()
+                .forEach(ball -> assertThat(rangeNumbers).contains(ball.getNumber()));
     }
 
     @Test
@@ -32,7 +30,7 @@ class InningTest {
         List<Integer> input = Arrays.asList(1, 2, 3);
 
         //when
-        Inning batterBalls = Inning.createInning(input);
+        Balls batterBalls = Balls.create(input);
 
         //then
         assertThat(batterBalls.getBalls()).hasSize(3);
@@ -48,7 +46,7 @@ class InningTest {
 
         //when //then
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> Inning.createInning(invalidInput))
+                .isThrownBy(() -> Balls.create(invalidInput))
                 .withMessage("야구 게임 한 회에는 중복되지 않는 숫자 3개가 있어야 합니다.");
     }
 
@@ -60,7 +58,7 @@ class InningTest {
 
         //when //then
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> Inning.createInning(invalidInput))
+                .isThrownBy(() -> Balls.create(invalidInput))
                 .withMessage("야구 게임 한 회에는 중복되지 않는 숫자 3개가 있어야 합니다.");
     }
 }
