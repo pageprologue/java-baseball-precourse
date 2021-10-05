@@ -1,7 +1,6 @@
 package baseball.domain.score;
 
 import baseball.domain.baseball.Player;
-import baseball.domain.score.Score;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

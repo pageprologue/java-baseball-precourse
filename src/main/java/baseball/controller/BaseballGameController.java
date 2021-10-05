@@ -51,15 +51,11 @@ public class BaseballGameController {
     private void ifGameFinished() {
         if (isFinish()) {
             OutputView.printRestartOrEndMessage();
-            changeState(InputView.inputState());
+            baseballGame.restart(InputView.inputState());
         }
     }
 
     private boolean isFinish() {
         return baseballGame.getGameState() instanceof Finish;
-    }
-
-    private void changeState(int state) {
-        baseballGame.restart(state);
     }
 }

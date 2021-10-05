@@ -8,7 +8,7 @@ public class Inning {
     private final Player pitcher;
     private final Player batter;
 
-    public Inning(Player pitcher, Player batter) {
+    private Inning(Player pitcher, Player batter) {
         this.pitcher = pitcher;
         this.batter = batter;
     }
